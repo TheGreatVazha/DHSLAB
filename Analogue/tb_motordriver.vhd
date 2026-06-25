@@ -44,10 +44,10 @@ BEGIN
   Volt_digital == 5.0;
   Volt_motor1 == 9.0;
 
-  nSleep_S <= '1' after 10 us; -- activate chip
-
   ctrl1_P: PROCESS
   BEGIN
+    wait for 10 us;
+    nSleep_S <= '1'; -- activate chip
     -- Testcase 1: Drive Motor 1 (Forward)
     wait for 300.0 us;
     in1_S <= '1';    -- forward1, coast2
