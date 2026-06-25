@@ -133,10 +133,10 @@ BEGIN
     -- (If you work alone use 234567 as second matriculation number.)
     -- Check in the simulation window how the rpms of the motors change.
 
-    -- Matriculation 1: 922816 -> lower 4: 2816
+    -- Matriculation 1: 123456 -> lower 4: 3456
     -- Matriculation 2 (Partner): 234567 -> lower 4: 4567
     -- Higher: 4567 (Base period)  -> 01000111010111 in binary
-    -- Lower:  2816 (Duty cycle)   -> 00101100000000 in binary
+    -- Lower:  3456 (Duty cycle)   -> 00110110000000 in binary
 
     message <= (others => '0');
     message(message_length-1 downto message_length-2) <= "01";  -- write to base register 
@@ -148,7 +148,7 @@ BEGIN
     
     message <= (others => '0');
     message(message_length-1 downto message_length-2) <= "10";  -- write to duty register 
-    message(13 downto 0)                              <= "00101100000000"; -- 2816
+    message(13 downto 0)                              <= "00110110000000"; -- 3456
     start                                             <= '1';
     wait until send = '1';
     start                                             <= '0';
